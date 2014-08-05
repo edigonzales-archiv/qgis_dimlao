@@ -1,0 +1,7 @@
+<RCC>
+ 
+    <qresource prefix="/plugins/dimlao" >
+        <file>icons/dimensioning.png</file>
+    </qresource>   
+    
+</RCC>
