@@ -14,14 +14,15 @@ class CreateDimensions(QObject):
         self.myIdent = ident
         self.myScale = scale
         self.mySelectedFeatures = selectedfeatures
+        
+        self.boundary_lines = {}
 
         
     def run(self):
         # create line vector layer with dimensions (=boundary)
         crs = self.iface.mapCanvas().mapSettings().destinationCrs().authid()
         
-        fields = "&field=parcelnr:string(200)"
-        fields += "&field=len_txt:string(50)"
+        fields = "&field=len_txt:string(50)"
         
         layer_title = "dimensions"
         
@@ -67,7 +68,14 @@ class CreateDimensions(QObject):
             if wkbtype in [QGis.WKBMultiPolygon,QGis.WKBMultiPolygon25D]:
                 for poly in geom.asMultiPolygon():
                     for line in poly:
-                        self.splitline(line, pid)                        
+                        self.splitline(line, pid)   
+        
+        my_features = []
+        for feat in self.boundary_lines.itervalues():
+            my_features.append(feat)
+        
+        # add lines here
+        self.boundaryprovider.addFeatures(my_features)
 
         boundarylayer.updateExtents()      
         pointlayer.updateExtents()      
@@ -126,6 +134,7 @@ class CreateDimensions(QObject):
 
             geom =  feat.geometry()
             bbox = geom.boundingBox()
+
 
             if self.myScale == "500":
                 print "500"
@@ -192,16 +201,29 @@ class CreateDimensions(QObject):
             p1 = myLine[0]
             p2 = myLine[1]
             
+            # normalize linesegment
+            if p1.x() > p2.x():
+                pt = QgsPoint(p1.x(), p1.y())
+                p1 = QgsPoint(p2.x(), p2.y())
+                p2 = QgsPoint(pt.x(), pt.y())
+                
+            my_hash = hash((p1.x(), p1.y(), p2.x(), p2.y()))
+
             newline = QgsGeometry.fromPolyline([p1, p2])
-            
+    
             dist = newline.length()
             myLength = str(round(float(dist), 1)) + "0"
             
             fet = QgsFeature()
-            fet.setGeometry( newline )
-            fet.setAttributes([pid, myLength])
-            self.boundaryprovider.addFeatures( [ fet ] )
+            fet.setGeometry(newline)
+            fet.setAttributes([myLength])
             
+            # identical lines will be overwritten
+            self.boundary_lines[my_hash] = fet
+
+#            self.boundaryprovider.addFeatures( [ fet ] )
+            
+            # points will still be stored multiple times
             newpoint = QgsGeometry.fromPoint(QgsPoint(p1))
             fet = QgsFeature()
             fet.setGeometry( newpoint )
