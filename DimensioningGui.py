@@ -31,6 +31,8 @@ class DimensioningGui(QDialog, Ui_Dimensioning):
         self.cBoxOutputScale.clear()
         self.cBoxOutputScale.insertItem(1, str("1:500"), int(500))
         self.cBoxOutputScale.insertItem(2, str("1:1000"), int(1000))
+        self.cBoxOutputScale.insertItem(3, str("1:2000"), int(2000))
+        self.cBoxOutputScale.insertItem(4, str("1:4000"), int(4000))
 
         layers = self.getLayerNames([2])
         self.cBoxParcelLayer.clear()
