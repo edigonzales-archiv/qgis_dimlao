@@ -10,7 +10,7 @@
 name=DimLao
 qgisMinimumVersion=2.4
 description=DimLao
-version=0.2
+version=0.1.0
 author=Stefan Ziegler
 email=edi.gonzales@gmail.com
 
