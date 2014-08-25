@@ -10,7 +10,7 @@
 name=DimLao
 qgisMinimumVersion=2.4
 description=DimLao
-version=0.1.0
+version=0.1.1
 author=Stefan Ziegler
 email=edi.gonzales@gmail.com
 
@@ -24,9 +24,9 @@ email=edi.gonzales@gmail.com
 # Tags are comma separated with spaces allowed
 tags=
 
-homepage=https://github.com/edigonzales/qgis_dimlao
-tracker=https://github.com/edigonzales/qgis_dimlao/issues
-repository=https://github.com/edigonzales/qgis_dimlao
+homepage=https://bitbucket.org/edigonzales/qgis_dimlao/wiki/Home
+tracker=https://bitbucket.org/edigonzales/qgis_dimlao/issues
+repository=https://bitbucket.org/edigonzales/qgis_dimlao
 icon=icon.png
 # experimental flag
 experimental=False

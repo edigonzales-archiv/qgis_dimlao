@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="2.5.0-Master" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="1" maxLabelScale="1e+08" simplifyDrawingTol="1" simplifyMaxScale="1" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+<qgis version="2.4.0-Chugiak" minimumScale="-4.65661e-10" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="1" maxLabelScale="1e+08" simplifyDrawingTol="1" simplifyMaxScale="1" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
   <renderer-v2 symbollevels="0" type="singleSymbol">
     <symbols>
       <symbol alpha="1" type="line" name="0">
@@ -88,7 +88,7 @@
     <property key="labeling/obstacle" value="true"/>
     <property key="labeling/placeDirectionSymbol" value="0"/>
     <property key="labeling/placement" value="2"/>
-    <property key="labeling/placementFlags" value="2"/>
+    <property key="labeling/placementFlags" value="4"/>
     <property key="labeling/plussign" value="false"/>
     <property key="labeling/preserveRotation" value="true"/>
     <property key="labeling/previewBkgrdColor" value="#ffffff"/>
@@ -193,10 +193,14 @@
     <multilineenabled fieldname="" on=""/>
     <selectedonly on=""/>
   </labelattributes>
+  <edittypes>
+    <edittype labelontop="0" editable="1" name="parcelnr"/>
+    <edittype labelontop="0" editable="1" name="len_txt"/>
+  </edittypes>
   <editform></editform>
   <editforminit></editforminit>
   <featformsuppress>0</featformsuppress>
-  <annotationform></annotationform>
+  <annotationform>.</annotationform>
   <editorlayout>generatedlayout</editorlayout>
   <excludeAttributesWMS/>
   <excludeAttributesWFS/>
